@@ -1,9 +1,10 @@
 "use client";
-import Link from "next/link";
-import { useSession, signOut } from "next-auth/react";
 import React from "react";
+import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/react";
+import UserInfo from "./UserInfo";
 
-const Navbar = () => {
+export default function Navbar() {
     const { data: session } = useSession();
 
     const links = (
@@ -45,20 +46,22 @@ const Navbar = () => {
 
             <div className="navbar-end">
                 {session ? (
-                    <button
-                        onClick={() => signOut()}
-                        className="btn bg-red-500 text-white hover:bg-red-600"
-                    >
-                        Logout
-                    </button>
+                    <div className="flex items-center gap-2">
+                        <UserInfo />
+                        <button
+                            onClick={() => signOut()}
+                            className="btn bg-red-500 text-white hover:bg-red-600 rounded-md"
+                        >
+                            Logout
+                        </button>
+                    </div>
                 ) : (
-                    <Link href="/login" className="btn bg-blue-500 text-white hover:bg-blue-600">
-                        Login
-                    </Link>
+                    <div className="flex justify-center items-center gap-2">
+                        <UserInfo />
+                        <button className="btn btn-neutral rounded-md" onClick={() => signIn()}>Login</button>
+                    </div>
                 )}
             </div>
         </div>
     );
 };
-
-export default Navbar;

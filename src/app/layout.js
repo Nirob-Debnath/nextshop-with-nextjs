@@ -1,21 +1,21 @@
 "use client";
 import "./globals.css";
-import { SessionProvider } from "next-auth/react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import NextAuthSessionProvider from "./providers/NextAuthSessionProvider";
 
 
 export default function RootLayout({ children, session }) {
   return (
     <html lang="en">
       <body>
-        <SessionProvider session={session}>
+        <NextAuthSessionProvider>
           <Navbar />
           <div className="min-h-screen">
             {children}
           </div>
           <Footer />
-        </SessionProvider>
+        </NextAuthSessionProvider>
       </body>
     </html>
   );
