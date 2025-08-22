@@ -18,56 +18,24 @@ const ProductsPage = () => {
     };
 
     return (
-        <div style={{ padding: '2rem' }}>
-            <h1 style={{ textAlign: 'center', marginBottom: '2rem' }}>Products</h1>
-            <div
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(5, 1fr)',
-                    gap: '2rem',
-                }}
-            >
+        <div className="py-8 px-4">
+            <h1 className="text-center text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">Products</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
                 {products.map((product) => (
                     <div
                         key={product.id}
-                        style={{
-                            border: '1px solid #eee',
-                            borderRadius: '10px',
-                            padding: '1rem',
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                            textAlign: 'center',
-                            background: '#fff',
-                            position: 'relative',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            justifyContent: 'space-between',
-                            height: '290px',
-                        }}
+                        className="relative border border-[#c5cae9] dark:border-gray-800 rounded-xl p-4 shadow-lg text-center bg-[#f5f7fa] dark:bg-[#23243a] flex flex-col justify-between h-64 transition duration-200 hover:shadow-xl"
                     >
                         <div>
-                                <img
-                                    src={product.image}
-                                    alt={product.name}
-                                    style={{ width: '100%', height: '120px', objectFit: 'cover', borderRadius: '8px', background: '#e3eafc' }}
-                                />
-                                <h3 style={{ margin: '1rem 0 0.5rem', color: '#1a237e', fontWeight: 600 }}>{product.model}</h3>
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-34 object-cover rounded-lg bg-[#e3eafc] dark:bg-[#2c2e4a] mb-2"
+                            />
+                            <h3 className="mt-4 mb-2 text-indigo-900 dark:text-indigo-300 font-semibold text-base">{product.model}</h3>
                         </div>
                         <button
-                            style={{
-                                margin: '0 auto',
-                                marginTop: '1rem',
-                                padding: '0.5rem 1.5rem',
-                                    background: '#3949ab',
-                                color: '#fff',
-                                border: 'none',
-                                borderRadius: '6px',
-                                cursor: 'pointer',
-                                position: 'absolute',
-                                left: '50%',
-                                bottom: '16px',
-                                transform: 'translateX(-50%)',
-                                width: '80%'
-                            }}
+                            className="w-4/5 mx-auto mt-2 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold text-base transition absolute left-1/2 bottom-4 -translate-x-1/2"
                             onClick={() => handleView(product.id)}
                         >
                             View

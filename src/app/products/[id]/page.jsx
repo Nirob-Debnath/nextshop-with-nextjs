@@ -21,30 +21,34 @@ const ProductDetailPage = () => {
     }
 
     return (
-        <div style={{ padding: "2rem", maxWidth: "600px", margin: "0 auto" }}>
-            <div style={{
-                background: '#f5f7fa',
-                border: '1px solid #c5cae9',
-                borderRadius: '12px',
-                boxShadow: '0 4px 16px rgba(58, 90, 255, 0.07)',
-                padding: '2rem',
-                textAlign: 'center',
-            }}>
-                <img
-                    src={product.image}
-                    alt={product.name}
-                    style={{ width: "100%", height: "240px", objectFit: "cover", borderRadius: "10px", background: '#e3eafc' }}
-                />
-                <h1 style={{ margin: "1.5rem 0 0.5rem", color: '#1a237e', fontWeight: 700 }}>{product.model}</h1>
-                <p style={{ color: "#3949ab", fontWeight: 600, marginBottom: "1rem" }}>${product.price} &nbsp;|&nbsp; {product.category}</p>
-                <p style={{ fontSize: "1.1rem", color: "#555", marginBottom: '1rem' }}>{product.description}</p>
-                <div style={{ textAlign: 'left', margin: '0 auto', maxWidth: '400px', color: "black", background: '#e3eafc', borderRadius: '8px', padding: '1rem' }}>
-                    <p><strong>Model:</strong> {product.model}</p>
-                    <p><strong>RAM:</strong> {product.ram} ({product.ramType})</p>
-                    <p><strong>SSD:</strong> {product.ssd}</p>
-                    <p><strong>HDD:</strong> {product.hdd}</p>
-                    <p><strong>GPU:</strong> {product.gpu}</p>
-                    <p><strong>Processor:</strong> {product.processor}</p>
+        <div className="py-8 px-4 max-w-4xl mx-auto">
+            <div className="flex flex-col md:flex-row bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl shadow-lg overflow-hidden">
+                {/* Left section: image and product name centered */}
+                <div className="md:w-1/2 flex flex-col items-center justify-center p-8">
+                    <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full max-w-xs h-72 object-cover rounded-xl bg-blue-100 dark:bg-gray-800 mb-6"
+                    />
+                    <h1 className="text-2xl font-bold text-gray-900 dark:text-gray-100 text-center">{product.name}</h1>
+                </div>
+                {/* Right section: details and price at middle bottom */}
+                <div className="md:w-1/2 p-8 flex flex-col justify-center relative">
+                    <span className="block text-lg font-bold text-indigo-700 dark:text-indigo-300 mb-2">{product.category}</span>
+                    <span className="block text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">{product.model}</span>
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">{product.description}</p>
+                    <div className="bg-blue-50 dark:bg-gray-800 rounded-lg p-4 mb-16">
+                        <p className="mb-2"><span className="font-semibold">Model:</span> {product.model}</p>
+                        <p className="mb-2"><span className="font-semibold">RAM:</span> {product.ram} ({product.ramType})</p>
+                        <p className="mb-2"><span className="font-semibold">SSD:</span> {product.ssd}</p>
+                        <p className="mb-2"><span className="font-semibold">HDD:</span> {product.hdd}</p>
+                        <p className="mb-2"><span className="font-semibold">GPU:</span> {product.gpu}</p>
+                        <p className="mb-2"><span className="font-semibold">Processor:</span> {product.processor}</p>
+                    </div>
+                    {/* Price at middle bottom */}
+                    <div className="absolute left-1/2 bottom-8 -translate-x-1/2">
+                        <span className="block text-xl font-bold text-green-700 dark:text-green-400">Price: ${product.price}</span>
+                    </div>
                 </div>
             </div>
         </div>
